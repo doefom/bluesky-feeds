@@ -10,3 +10,4 @@ Route::get('/', function () {
 Route::get('/.well-known/did.json', [FeedController::class, 'getDidDocument']);
 
 Route::get('/xrpc/app.bsky.feed.getFeedSkeleton', [FeedController::class, 'getFeedSkeleton']);
+Route::get('/', [FeedController::class, 'getFeedSkeleton']);
