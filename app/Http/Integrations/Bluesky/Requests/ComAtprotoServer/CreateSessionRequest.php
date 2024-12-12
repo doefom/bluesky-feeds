@@ -25,8 +25,8 @@ class CreateSessionRequest extends Request implements HasBody
     /**
      * Pass in the Bluesky handle and password (App Password) to the request.
      *
-     * @param string $identifier The Bluesky handle, e.g. 'myhandle.bsky.social'
-     * @param string $password   The user's password or App Password.
+     * @param  string  $identifier  The Bluesky handle, e.g. 'myhandle.bsky.social'
+     * @param  string  $password  The user's password or App Password.
      */
     public function __construct(
         protected string $identifier,
@@ -40,7 +40,7 @@ class CreateSessionRequest extends Request implements HasBody
     {
         return [
             'identifier' => $this->identifier,
-            'password'   => $this->password,
+            'password' => $this->password,
         ];
     }
 }

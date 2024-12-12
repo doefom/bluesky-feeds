@@ -12,9 +12,7 @@ class GetProfileRequest extends Request
      */
     protected Method $method = Method::GET;
 
-    public function __construct(protected readonly string $actor)
-    {
-    }
+    public function __construct(protected readonly string $actor) {}
 
     /**
      * The endpoint for the request

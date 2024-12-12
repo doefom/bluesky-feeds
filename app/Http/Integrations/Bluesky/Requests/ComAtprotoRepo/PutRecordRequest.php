@@ -24,9 +24,7 @@ class PutRecordRequest extends Request implements HasBody
         protected readonly array $record,
         protected readonly ?string $swapRecord = null,
         protected readonly ?string $swapCommit = null,
-    )
-    {
-    }
+    ) {}
 
     /**
      * The endpoint for the request

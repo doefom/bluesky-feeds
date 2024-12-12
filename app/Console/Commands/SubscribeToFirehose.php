@@ -6,8 +6,6 @@ use App\Constants\Hashtag;
 use App\Models\Post;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use Ratchet\Client\Connector;
 
 class SubscribeToFirehose extends Command
@@ -33,7 +31,7 @@ class SubscribeToFirehose extends Command
 
                     $this->processCommit($payload);
                 } catch (\Exception $e) {
-                    $this->error('Failed to process message: ' . $e->getMessage());
+                    $this->error('Failed to process message: '.$e->getMessage());
                 }
             });
 
@@ -42,7 +40,7 @@ class SubscribeToFirehose extends Command
                 $this->info('Connection closed.');
             });
         })->catch(function ($error) {
-            $this->error('Failed to connect to the firehose: ' . $error->getMessage());
+            $this->error('Failed to connect to the firehose: '.$error->getMessage());
         });
     }
 
@@ -81,9 +79,9 @@ class SubscribeToFirehose extends Command
         $text = Arr::get($payload, 'commit.record.text');
 
         $words = preg_split('/\s+/', $text, -1, PREG_SPLIT_NO_EMPTY);
-        $hasStrongHashtag = !empty(array_intersect($words, Hashtag::STRONG_HASHTAGS));
+        $hasStrongHashtag = ! empty(array_intersect($words, Hashtag::STRONG_HASHTAGS));
 
-        if (!$hasStrongHashtag) {
+        if (! $hasStrongHashtag) {
             return;
         }
 
@@ -93,9 +91,5 @@ class SubscribeToFirehose extends Command
         ]);
     }
 
-    private function processDelete(array $payload): void
-    {
-
-    }
-
+    private function processDelete(array $payload): void {}
 }

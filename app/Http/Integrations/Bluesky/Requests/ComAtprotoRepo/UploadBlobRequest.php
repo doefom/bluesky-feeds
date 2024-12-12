@@ -10,6 +10,7 @@ use Saloon\Traits\Body\HasStringBody;
 class UploadBlobRequest extends Request implements HasBody
 {
     use HasStringBody;
+
     /**
      * The HTTP method.
      */
@@ -21,8 +22,7 @@ class UploadBlobRequest extends Request implements HasBody
     public function __construct(
         protected readonly string $fileContent,
         protected readonly string $mimeType,
-    ) {
-    }
+    ) {}
 
     /**
      * The endpoint for the uploadBlob method.

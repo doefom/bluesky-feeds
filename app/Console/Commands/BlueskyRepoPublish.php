@@ -38,11 +38,10 @@ class BlueskyRepoPublish extends Command
         $handle = config('bluesky.handle');
         $password = config('bluesky.password');
 
-        $bluesky = new Bluesky();
+        $bluesky = new Bluesky;
         $bluesky->authenticate($handle, $password);
         $uploadBlobRes = $bluesky->uploadBlob($avatarPath);
         $blob = Arr::get($uploadBlobRes, 'blob');
-
 
         //{
         //  repo: 'did:plc:surxzhejohzswnhaz4apnent',

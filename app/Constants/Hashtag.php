@@ -4,7 +4,6 @@ namespace App\Constants;
 
 class Hashtag
 {
-
     public const STRONG_HASHTAGS = [
         '#standuppaddle',
         '#standuppaddleboard',
@@ -61,11 +60,10 @@ class Hashtag
         '#riversup',
         '#lakesup',
         '#beachsup',
-        '#oceansup'
+        '#oceansup',
     ];
 
     public const WEAK_HASHTAGS = [
-        '#sup'
+        '#sup',
     ];
-
 }

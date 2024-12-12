@@ -16,12 +16,11 @@ use Saloon\Http\Auth\TokenAuthenticator;
 
 class Bluesky
 {
-
     protected BlueskyConnector $connector;
 
     public function __construct()
     {
-        $this->connector = new BlueskyConnector();
+        $this->connector = new BlueskyConnector;
     }
 
     /**
@@ -36,7 +35,7 @@ class Bluesky
 
         $accessToken = $res->json('accessJwt');
 
-        if (!$accessToken) {
+        if (! $accessToken) {
             throw new Exception('Failed to authenticate with Bluesky.');
         }
 
@@ -61,25 +60,23 @@ class Bluesky
         string $repo,
         string $collection,
         string $rkey,
-        ?bool $validate = null,
+        ?bool $validate,
         array $record,
         ?string $swapRecord = null,
         ?string $swapCommit = null
-    )
-    {
+    ) {
         $res = $this->connector->send(new PutRecordRequest($repo, $collection, $rkey, $validate, $record, $swapRecord, $swapCommit));
 
         return $res->json();
     }
 
     public function deleteRecord(
-        string  $repo,
-        string  $collection,
-        string  $rkey,
+        string $repo,
+        string $collection,
+        string $rkey,
         ?string $swapRecord = null,
         ?string $swapCommit = null
-    ): array
-    {
+    ): array {
         $res = $this->connector->send(new DeleteRecordRequest($repo, $collection, $rkey, $swapRecord, $swapCommit));
 
         return $res->json();
@@ -94,5 +91,4 @@ class Bluesky
 
         return $res->json();
     }
-
 }

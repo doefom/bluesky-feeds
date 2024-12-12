@@ -22,9 +22,7 @@ class DeleteRecordRequest extends Request implements HasBody
         protected readonly string $rkey,
         protected readonly ?string $swapRecord = null,
         protected readonly ?string $swapCommit = null,
-    )
-    {
-    }
+    ) {}
 
     /**
      * The endpoint for the request

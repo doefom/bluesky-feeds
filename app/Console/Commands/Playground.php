@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Clients\Bluesky;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 
 class Playground extends Command
 {
@@ -27,7 +26,7 @@ class Playground extends Command
      */
     public function handle()
     {
-        $bluesky = new Bluesky();
+        $bluesky = new Bluesky;
         $bluesky->authenticate(config('bluesky.handle'), config('bluesky.password'));
 
         $repo = config('bluesky.feed_gen_publisher_did');

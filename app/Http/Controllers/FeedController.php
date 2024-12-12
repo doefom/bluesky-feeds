@@ -7,14 +7,13 @@ use Illuminate\Http\Request;
 
 class FeedController extends Controller
 {
-
     public function getFeedSkeleton(Request $request)
     {
         $limit = $request->integer('limit', 10);
         $cursor = $request->integer('cursor');
 
         $posts = Post::query()
-            ->when($cursor, fn($query) => $query->where('id', '<', $cursor))
+            ->when($cursor, fn ($query) => $query->where('id', '<', $cursor))
             ->orderBy('id', 'desc')
             ->limit($limit)
             ->get();
@@ -28,5 +27,4 @@ class FeedController extends Controller
             'feed' => $feed,
         ]);
     }
-
 }
