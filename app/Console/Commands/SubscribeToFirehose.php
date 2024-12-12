@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Constants\Hashtag;
+use App\Constants\Sup;
 use App\Models\Post;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Ratchet\Client\Connector;
@@ -30,7 +31,7 @@ class SubscribeToFirehose extends Command
                     $payload = json_decode($message->getPayload(), true);
 
                     $this->processCommit($payload);
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     $this->error('Failed to process message: '.$e->getMessage());
                 }
             });
@@ -73,27 +74,42 @@ class SubscribeToFirehose extends Command
 
     private function processCreate(array $payload): void
     {
-        $did = Arr::get($payload, 'did');
-        $cid = Arr::get($payload, 'commit.cid');
-        $rkey = Arr::get($payload, 'commit.rkey');
         $text = Arr::get($payload, 'commit.record.text');
 
         $words = preg_split('/\s+/', $text, -1, PREG_SPLIT_NO_EMPTY);
-        $hasStrongHashtag = ! empty(array_intersect($words, Hashtag::STRONG_HASHTAGS));
 
-        if (! $hasStrongHashtag) {
+        $hasStrongHashtag = ! empty(array_intersect($words, Sup::STRONG_HASHTAGS));
+        if ($hasStrongHashtag) {
+            $this->indexPost($payload);
+
             return;
         }
+
+        $hasWeakHashtag = ! empty(array_intersect($words, Sup::WEAK_HASHTAGS));
+        if ($hasWeakHashtag) {
+            $hasSupWord = ! empty(array_intersect($words, Sup::SUP_WORDS));
+            if ($hasSupWord) {
+                $this->indexPost($payload);
+            }
+        }
+    }
+
+    private function processDelete(array $payload): void
+    {
+        $cid = Arr::get($payload, 'commit.cid');
+
+        Post::query()->where('cid', $cid)->delete();
+    }
+
+    private function indexPost(array $payload): void
+    {
+        $did = Arr::get($payload, 'did');
+        $cid = Arr::get($payload, 'commit.cid');
+        $rkey = Arr::get($payload, 'commit.rkey');
 
         Post::query()->create([
             'uri' => "at://$did/app.bsky.feed.post/$rkey",
             'cid' => $cid,
         ]);
-    }
-
-    private function processDelete(array $payload): void {
-        $cid = Arr::get($payload, 'commit.cid');
-
-        Post::query()->where('cid', $cid)->delete();
     }
 }

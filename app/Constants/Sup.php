@@ -2,7 +2,7 @@
 
 namespace App\Constants;
 
-class Hashtag
+class Sup
 {
     public const STRONG_HASHTAGS = [
         '#standuppaddle',
@@ -65,5 +65,56 @@ class Hashtag
 
     public const WEAK_HASHTAGS = [
         '#sup',
+    ];
+
+    public const SUP_WORDS = [
+        'stand up',
+        'standup',
+        'paddle',
+        'paddling',
+        'board',
+        'paddel',
+        'SUP',
+        'surf',
+        'touring',
+        'wave',
+        'race',
+        'inflatable',
+        'hardboard',
+        'fin',
+        'deck',
+        'leash',
+        'carbon',
+        'paddleboard',
+        'stroke',
+        'glide',
+        'balance',
+        'stance',
+        'technique',
+        'adventure',
+        'water',
+        'lake',
+        'river',
+        'ocean',
+        'fitness',
+        'yoga',
+        'wind',
+        'current',
+        'swell',
+        'rescue',
+        'safety',
+        'wetsuit',
+        'drybag',
+        'lifejacket',
+        'pump',
+        'repair',
+        'portage',
+        'expedition',
+        'coast',
+        'coasts',
+        'sea',
+        'shore',
+        'shores',
+        'shoreline',
     ];
 }
