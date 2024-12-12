@@ -91,5 +91,9 @@ class SubscribeToFirehose extends Command
         ]);
     }
 
-    private function processDelete(array $payload): void {}
+    private function processDelete(array $payload): void {
+        $cid = Arr::get($payload, 'commit.cid');
+
+        Post::query()->where('cid', $cid)->delete();
+    }
 }
