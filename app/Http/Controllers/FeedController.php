@@ -23,7 +23,7 @@ class FeedController extends Controller
         });
 
         return response()->json([
-            'cursor' => $posts->last()?->id,
+            'cursor' => strval($posts->last()?->id),
             'feed' => $feed,
         ]);
     }
