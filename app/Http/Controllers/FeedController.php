@@ -27,4 +27,19 @@ class FeedController extends Controller
             'feed' => $feed,
         ]);
     }
+
+    public function getDidDocument()
+    {
+        return response()->json([
+            '@context' => ['https://www.w3.org/ns/did/v1'],
+            'id' => 'did:web:' . config('bluesky.feed_gen_hostname'),
+            'service' => [
+                [
+                    'id' => '#bsky_fg',
+                    'type' => 'BskyFeedGenerator',
+                    'serviceEndpoint' => 'https://' . config('bluesky.feed_gen_hostname')
+                ]
+            ]
+        ]);
+    }
 }
