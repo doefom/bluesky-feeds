@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'feed_gen_service_did' => env('FEEDGEN_SERVICE_DID'),
+    'feed_gen_service_did' => 'did:bsky:service:feedgen',
     'feed_gen_hostname' => env('FEEDGEN_HOSTNAME'),
     'feed_gen_publisher_did' => env('FEEDGEN_PUBLISHER_DID'),
 
+    'base_url' => 'https://bsky.social',
     'handle' => env('BLUESKY_HANDLE'),
     'password' => env('BLUESKY_APP_PASSWORD'),
-    'base_url' => env('BLUESKY_BASE_URL', 'https://bsky.social'),
 
     'record_name' => 'sup',
     'display_name' => 'Stand Up Paddleboarding',
