@@ -81,16 +81,6 @@ class SubscribeToFirehose extends Command
         $hasStrongHashtag = ! empty(array_intersect($words, Sup::STRONG_HASHTAGS));
         if ($hasStrongHashtag) {
             $this->indexPost($payload);
-
-            return;
-        }
-
-        $hasWeakHashtag = ! empty(array_intersect($words, Sup::WEAK_HASHTAGS));
-        if ($hasWeakHashtag) {
-            $hasSupWord = ! empty(array_intersect($words, Sup::SUP_WORDS));
-            if ($hasSupWord) {
-                $this->indexPost($payload);
-            }
         }
     }
 
