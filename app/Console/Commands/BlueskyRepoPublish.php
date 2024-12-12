@@ -62,7 +62,7 @@ class BlueskyRepoPublish extends Command
         //}
 
         $record = [
-            'did' => 'did:web:sup-feed-generator.durchpaddeln.de',
+            'did' => "did:web:$feedGenHostname",
             'displayName' => $displayName,
             'description' => $description,
             'avatar' => $blob,
