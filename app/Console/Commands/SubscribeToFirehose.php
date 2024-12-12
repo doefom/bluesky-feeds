@@ -83,18 +83,14 @@ class SubscribeToFirehose extends Command
         $words = preg_split('/\s+/', $text, -1, PREG_SPLIT_NO_EMPTY);
         $hasStrongHashtag = !empty(array_intersect($words, Hashtag::STRONG_HASHTAGS));
 
-        if ($hasStrongHashtag) {
+        if (!$hasStrongHashtag) {
             return;
         }
-
-        // TODO: Check if words contain hashtag
 
         Post::query()->create([
             'uri' => "at://$did/app.bsky.feed.post/$rkey",
             'cid' => $cid,
         ]);
-
-        $this->info('Created post: ' . Str::limit($text, 50));
     }
 
     private function processDelete(array $payload): void
