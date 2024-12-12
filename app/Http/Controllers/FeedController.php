@@ -35,8 +35,8 @@ class FeedController extends Controller
             'id' => 'did:web:' . config('bluesky.feed_gen_hostname'),
             'service' => [
                 [
-                    'id' => '#feed',
-                    'type' => 'AtprotoFeedGenerator',
+                    'id' => '#bsky_fg',
+                    'type' => 'BskyFeedGenerator',
                     'serviceEndpoint' => 'https://' . config('bluesky.feed_gen_hostname')
                 ]
             ]

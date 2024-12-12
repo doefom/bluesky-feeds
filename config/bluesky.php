@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'feed_gen_service_did' => 'did:bsky:service:feedgen',
+    // 'feed_gen_service_did' => 'did:bsky:service:feedgen',
     'feed_gen_hostname' => env('FEEDGEN_HOSTNAME'),
     'feed_gen_publisher_did' => env('FEEDGEN_PUBLISHER_DID'),
 
