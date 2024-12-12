@@ -11,7 +11,6 @@ class Sup
         '#standuppaddleboarding',
         '#paddleboarding',
         '#paddleboardgear',
-        '#suppaddle',
         '#suplife',
         '#supadventure',
         '#supboarding',

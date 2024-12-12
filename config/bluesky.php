@@ -11,6 +11,6 @@ return [
 
     'record_name' => 'sup',
     'display_name' => 'Stand Up Paddleboarding',
-    'description' => "A dedicated feed for all posts about Stand Up Paddleboarding. Whether you're a seasoned paddler or just starting, this is the place to share and discover everything about the topic.",
+    'description' => "A dedicated feed for all posts about Stand Up Paddleboarding. Whether you're a seasoned paddler or just starting, this is the place to share and discover everything about the topic. #standuppaddle #standuppaddleboarding #paddleboarding",
     'avatar_path' => resource_path('img/sup-feed-avatar.png'),
 ];
