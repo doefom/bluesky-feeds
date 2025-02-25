@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Clients\Bluesky;
+use App\Models\Feed;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 
@@ -27,16 +28,21 @@ class BlueskyRepoPublish extends Command
      */
     public function handle()
     {
-        $feedGenPublisherDid = config('bluesky.feed_gen_publisher_did');
-        $feedGenHostname = config('bluesky.feed_gen_hostname');
+        $feedSlug = $this->ask('Which feed do you want to publish? (slug)');
 
-        $recordName = config('bluesky.record_name');
-        $displayName = config('bluesky.display_name');
-        $description = config('bluesky.description');
-        $avatarPath = config('bluesky.avatar_path');
+        $feed = Feed::query()->where('slug', $feedSlug)->firstOrFail();
+        $publisher = $feed->publisher;
 
-        $handle = config('bluesky.handle');
-        $password = config('bluesky.password');
+        $feedGenPublisherDid = $publisher->feed_gen_publisher_did;
+        $feedGenHostname = $publisher->feed_gen_hostname;
+
+        $recordName = $feed->record_name;
+        $displayName = $feed->display_name;
+        $description = $feed->description;
+        $avatarPath = $feed->avatar_path;
+
+        $handle = $publisher->handle;
+        $password = decrypt($publisher->password);
 
         $bluesky = new Bluesky;
         $bluesky->authenticate($handle, $password);
