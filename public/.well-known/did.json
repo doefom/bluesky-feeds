@@ -7,12 +7,12 @@
         {
             "id": "#bsky_fg_sup",
             "type": "BskyFeedGenerator",
-            "serviceEndpoint": "https://bluesky-feeds.doefom.de/xrpc/app.bsky.feed.getFeedSkeleton?feed=at://did:web:bluesky-feeds.doefom.de/app.bsky.feed.generator/sup"
+            "serviceEndpoint": "https://bluesky-feeds.doefom.de"
         },
         {
             "id": "#bsky_fg_3d_printing",
             "type": "BskyFeedGenerator",
-            "serviceEndpoint": "https://bluesky-feeds.doefom.de/xrpc/app.bsky.feed.getFeedSkeleton?feed=at://did:web:bluesky-feeds.doefom.de/app.bsky.feed.generator/3d_printing"
+            "serviceEndpoint": "https://bluesky-feeds.doefom.de"
         }
     ]
 }
