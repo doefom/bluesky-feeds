@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('publishers', function (Blueprint $table) {
             $table->id();
-            $table->string('uri')->unique();
-            $table->text('cid');
             $table->timestamps();
+            $table->string('feed_gen_hostname');
+            $table->string('feed_gen_publisher_did');
+            $table->string('base_url');
+            $table->string('handle');
+            $table->string('password');
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('publishers');
     }
 };

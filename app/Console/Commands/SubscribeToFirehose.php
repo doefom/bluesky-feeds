@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Constants\Printing3D;
 use App\Constants\Sup;
+use App\Models\Feed;
 use App\Models\Post;
 use Exception;
 use Illuminate\Console\Command;
@@ -78,9 +80,18 @@ class SubscribeToFirehose extends Command
 
         $words = preg_split('/\s+/', $text, -1, PREG_SPLIT_NO_EMPTY);
 
-        $hasStrongHashtag = ! empty(array_intersect($words, Sup::STRONG_HASHTAGS));
-        if ($hasStrongHashtag) {
-            $this->indexPost($payload);
+        // Check SUP hashtags
+        $hasSupHashtag = ! empty(array_intersect($words, Sup::STRONG_HASHTAGS));
+        if ($hasSupHashtag) {
+            $feed = Feed::query()->where('title', 'SUP')->first();
+            $this->indexPost($payload, $feed);
+        }
+
+        // Check 3D Printing hashtags
+        $has3DPrintingHashtag = ! empty(array_intersect($words, Printing3D::STRONG_HASHTAGS));
+        if ($has3DPrintingHashtag) {
+            $feed = Feed::query()->where('title', '3D Printing')->first();
+            $this->indexPost($payload, $feed);
         }
     }
 
@@ -91,13 +102,14 @@ class SubscribeToFirehose extends Command
         Post::query()->where('cid', $cid)->delete();
     }
 
-    private function indexPost(array $payload): void
+    private function indexPost(array $payload, Feed $feed): void
     {
         $did = Arr::get($payload, 'did');
         $cid = Arr::get($payload, 'commit.cid');
         $rkey = Arr::get($payload, 'commit.rkey');
 
         Post::query()->create([
+            'feed_id' => $feed->id,
             'uri' => "at://$did/app.bsky.feed.post/$rkey",
             'cid' => $cid,
         ]);

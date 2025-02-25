@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post;
+use App\Models\Feed;
 use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
@@ -12,7 +12,12 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $posts = [
+        // -------------------------------------------------------------------------------------------
+        // SUP POSTS
+        // -------------------------------------------------------------------------------------------
+
+        $feedSup = Feed::query()->where('slug', 'sup')->first();
+        $postsSup = [
             [
                 'uri' => 'at://did:plc:surxzhejohzswnhaz4apnent/app.bsky.feed.post/3lcvgixnenc2u',
                 'cid' => 'bafyreiggigqkmwcqjybh5awxr4nymonkt6qdohircricmfpag5t2hx2ykq',
@@ -47,8 +52,14 @@ class PostSeeder extends Seeder
             ],
         ];
 
-        foreach ($posts as $post) {
-            Post::query()->create($post);
+        foreach ($postsSup as $post) {
+            $feedSup->posts()->create($post);
         }
+
+        // -------------------------------------------------------------------------------------------
+        // 3D PRINTING POSTS
+        // -------------------------------------------------------------------------------------------
+
+        $feed3DPrinting = Feed::query()->where('slug', '3d-printing')->first();
     }
 }
