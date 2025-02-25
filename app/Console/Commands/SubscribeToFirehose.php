@@ -104,6 +104,8 @@ class SubscribeToFirehose extends Command
 
     private function indexPost(array $payload, Feed $feed): void
     {
+        $this->info('Indexing post: '.Arr::get($payload, 'commit.record.text'));
+
         $did = Arr::get($payload, 'did');
         $cid = Arr::get($payload, 'commit.cid');
         $rkey = Arr::get($payload, 'commit.rkey');

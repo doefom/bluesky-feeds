@@ -3,7 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Clients\Bluesky;
+use App\Models\Feed;
+use App\Models\Publisher;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Crypt;
 
 class BlueskyRepoUnpublish extends Command
 {
@@ -19,19 +22,25 @@ class BlueskyRepoUnpublish extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Unpublish a feed from Bluesky';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $bluesky = new Bluesky;
-        $bluesky->authenticate(config('bluesky.handle'), config('bluesky.password'));
+        $feedSlug = $this->ask('Which feed do you want to unpublish? (slug)');
 
-        $repo = config('bluesky.feed_gen_publisher_did');
+        $feed = Feed::query()->where('slug', $feedSlug)->firstOrFail();
+        /* @var Publisher $publisher */
+        $publisher = $feed->publisher;
+
+        $bluesky = new Bluesky;
+        $bluesky->authenticate($publisher->handle, Crypt::decrypt($publisher->password));
+
+        $repo = $publisher->feed_gen_publisher_did;
         $collection = 'app.bsky.feed.generator';
-        $rkey = config('bluesky.record_name');
+        $rkey = $feed->record_name;
 
         $bluesky->deleteRecord($repo, $collection, $rkey);
 
