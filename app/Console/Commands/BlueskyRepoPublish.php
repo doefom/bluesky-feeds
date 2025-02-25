@@ -30,7 +30,7 @@ class BlueskyRepoPublish extends Command
     {
         $feedSlug = $this->ask('Which feed do you want to publish? (slug)');
 
-        $feed = Feed::query()->where('slug', $feedSlug)->firstOrFail();
+        $feed = Feed::query()->where('record_name', $feedSlug)->firstOrFail();
         $publisher = $feed->publisher;
 
         $feedGenPublisherDid = $publisher->feed_gen_publisher_did;
@@ -41,11 +41,8 @@ class BlueskyRepoPublish extends Command
         $description = $feed->description;
         $avatarPath = $feed->avatar_path;
 
-        $handle = $publisher->handle;
-        $password = decrypt($publisher->password);
-
-        $bluesky = new Bluesky;
-        $bluesky->authenticate($handle, $password);
+        $bluesky = new Bluesky($publisher->base_url);
+        $bluesky->authenticate($publisher);
         $uploadBlobRes = $bluesky->uploadBlob($avatarPath);
         $blob = Arr::get($uploadBlobRes, 'blob');
 

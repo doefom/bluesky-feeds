@@ -18,7 +18,7 @@ class FeedController extends Controller
         $atUri = $request->input('feed');
         $feedSlug = collect(explode('/', $atUri))->last();
 
-        $feed = Feed::query()->where('slug', $feedSlug)->firstOrFail();
+        $feed = Feed::query()->where('record_name', $feedSlug)->firstOrFail();
 
         $posts = Post::query()
             ->where('feed_id', $feed->id)

@@ -16,7 +16,8 @@ class PostSeeder extends Seeder
         // SUP POSTS
         // -------------------------------------------------------------------------------------------
 
-        $feedSup = Feed::query()->where('slug', 'sup')->first();
+        $feedSup = Feed::query()->where('record_name', 'sup')->first();
+
         $postsSup = [
             ['uri' => 'at://did:plc:surxzhejohzswnhaz4apnent/app.bsky.feed.post/3lcvgixnenc2u', 'cid' => 'bafyreiggigqkmwcqjybh5awxr4nymonkt6qdohircricmfpag5t2hx2ykq'],
             ['uri' => 'at://did:plc:otpse5r6dphwe5rjpsotky4b/app.bsky.feed.post/3lcvpnwuebk2u', 'cid' => 'bafyreidtzzqjvpf5b5mku6y226sspdrozkhbwjjic2b2gswts7oi2g4ucm'],
@@ -65,6 +66,14 @@ class PostSeeder extends Seeder
         // 3D PRINTING POSTS
         // -------------------------------------------------------------------------------------------
 
-        $feed3DPrinting = Feed::query()->where('slug', '3d-printing')->first();
+        $feed3DPrinting = Feed::query()->where('record_name', '3d-printing')->first();
+
+        $posts3DPrinting = [
+            ['uri' => 'at://did:plc:wzxsg3lasghtdjnlsa6a45pn/app.bsky.feed.post/3lizdcqrfjc2a', 'cid' => 'bafyreigwmzluyz6unhzrugd2jgvtssfyaswmstqcke3lat4hq7h5lcxbye'],
+        ];
+
+        foreach ($posts3DPrinting as $post) {
+            $feed3DPrinting->posts()->create($post);
+        }
     }
 }

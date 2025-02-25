@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Feed extends Model
 {
-    protected $fillable = ['title', 'slug', 'feedgen_publisher_id'];
+    protected $fillable = ['title', 'record_name', 'display_name', 'description', 'avatar_path'];
 
     protected function publisher(): BelongsTo
     {

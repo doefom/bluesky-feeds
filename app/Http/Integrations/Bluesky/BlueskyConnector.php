@@ -6,6 +6,8 @@ use Saloon\Http\Connector;
 
 class BlueskyConnector extends Connector
 {
+    public function __construct(protected readonly string $baseUrl) {}
+
     /**
      * Define the base URL for the Bluesky API.
      * Typically, this would be the PDS service endpoint.
@@ -14,6 +16,6 @@ class BlueskyConnector extends Connector
      */
     public function resolveBaseUrl(): string
     {
-        return config('bluesky.base_url');
+        return $this->baseUrl;
     }
 }

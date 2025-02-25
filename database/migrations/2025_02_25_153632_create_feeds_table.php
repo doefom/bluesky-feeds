@@ -16,8 +16,6 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(Publisher::class);
-            $table->string('title');
-            $table->string('slug')->unique();
             $table->string('record_name');
             $table->string('display_name');
             $table->text('description')->nullable();

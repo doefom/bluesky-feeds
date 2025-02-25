@@ -8,6 +8,7 @@ use App\Http\Integrations\Bluesky\Requests\ComAtprotoRepo\DeleteRecordRequest;
 use App\Http\Integrations\Bluesky\Requests\ComAtprotoRepo\PutRecordRequest;
 use App\Http\Integrations\Bluesky\Requests\ComAtprotoRepo\UploadBlobRequest;
 use App\Http\Integrations\Bluesky\Requests\ComAtprotoServer\CreateSessionRequest;
+use App\Models\Publisher;
 use Exception;
 use JsonException;
 use Saloon\Exceptions\Request\FatalRequestException;
@@ -18,9 +19,9 @@ class Bluesky
 {
     protected BlueskyConnector $connector;
 
-    public function __construct()
+    public function __construct(string $baseUrl = 'https://bsky.social')
     {
-        $this->connector = new BlueskyConnector;
+        $this->connector = new BlueskyConnector($baseUrl);
     }
 
     /**
@@ -29,9 +30,9 @@ class Bluesky
      * @throws JsonException
      * @throws Exception
      */
-    public function authenticate(string $handle, string $password): static
+    public function authenticate(Publisher $publisher): static
     {
-        $res = $this->connector->send(new CreateSessionRequest($handle, $password));
+        $res = $this->connector->send(new CreateSessionRequest($publisher->handle, decrypt($publisher->password)));
 
         $accessToken = $res->json('accessJwt');
 

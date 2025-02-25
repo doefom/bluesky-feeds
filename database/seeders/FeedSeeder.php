@@ -21,10 +21,7 @@ class FeedSeeder extends Seeder
         $durchpaddeln = Publisher::query()->where('handle', 'durchpaddeln.de')->first();
 
         Feed::query()->create([
-            'title' => 'SUP',
-            'slug' => 'sup',
             'publisher_id' => $durchpaddeln->id,
-
             'record_name' => 'sup',
             'display_name' => 'Stand Up Paddleboarding',
             'description' => "A dedicated feed for all posts about Stand Up Paddleboarding. Whether you're a seasoned paddler or just starting, this is the place to share and discover everything about the topic. #standuppaddle #standuppaddleboarding #paddleboarding",
@@ -38,10 +35,7 @@ class FeedSeeder extends Seeder
         $doefom = Publisher::query()->where('handle', 'doefom.de')->first();
 
         Feed::query()->create([
-            'title' => '3D Printing',
-            'slug' => '3d-printing',
             'publisher_id' => $doefom->id,
-
             'record_name' => '3d-printing',
             'display_name' => '3D Printing',
             'description' => "A dedicated feed for all posts about 3D Printing. Whether you're a longtime printer or just starting, this is the place to share and discover everything about the topic. #3dprinting #3dprinter #3dprinted #3dprint",

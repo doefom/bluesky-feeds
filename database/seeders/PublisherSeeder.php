@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Publisher;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Crypt;
 
 class PublisherSeeder extends Seeder
 {
@@ -22,7 +21,7 @@ class PublisherSeeder extends Seeder
                 'feed_gen_publisher_did' => $publisher['feed_gen_publisher_did'],
                 'base_url' => $publisher['base_url'],
                 'handle' => $publisher['handle'],
-                'password' => Crypt::encryptString($publisher['password']),
+                'password' => encrypt($publisher['password']),
             ]);
         }
 
