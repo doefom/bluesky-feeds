@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Feed;
 use App\Models\Post;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class FeedController extends Controller
 {
@@ -39,16 +41,25 @@ class FeedController extends Controller
 
     public function getDidDocument()
     {
-        return response()->json([
-            '@context' => ['https://www.w3.org/ns/did/v1'],
-            'id' => 'did:web:'.config('bluesky.feed_gen_hostname'),
-            'service' => [
-                [
-                    'id' => '#bsky_fg',
-                    'type' => 'BskyFeedGenerator',
-                    'serviceEndpoint' => 'https://'.config('bluesky.feed_gen_hostname'),
+        $feedsJson = [];
+
+        $feeds = Feed::all();
+
+        foreach ($feeds as $feed) {
+            $publisher = $feed->publisher;
+
+            $feedsJson[] = [
+                'id' => 'did:web:'.$publisher->feed_gen_hostname,
+                'service' => [
+                    [
+                        'id' => '#bsky_fg_'.Str::snake($feed->record_name),
+                        'type' => 'BskyFeedGenerator',
+                        'serviceEndpoint' => 'https://'.$publisher->feed_gen_hostname,
+                    ],
                 ],
-            ],
-        ]);
+            ];
+        }
+
+        return response()->json($feedsJson);
     }
 }
