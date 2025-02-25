@@ -41,25 +41,24 @@ class FeedController extends Controller
 
     public function getDidDocument()
     {
-        $feedsJson = [];
+        $didDoc = [
+            '@context' => 'https://www.w3.org/ns/did/v1',
+            'id' => 'did:web:bluesky-feeds.doefom.de',
+            'service' => [],
+        ];
 
         $feeds = Feed::all();
 
         foreach ($feeds as $feed) {
             $publisher = $feed->publisher;
 
-            $feedsJson[] = [
-                'id' => 'did:web:'.$publisher->feed_gen_hostname,
-                'service' => [
-                    [
-                        'id' => '#bsky_fg_'.Str::snake($feed->record_name),
-                        'type' => 'BskyFeedGenerator',
-                        'serviceEndpoint' => 'https://'.$publisher->feed_gen_hostname,
-                    ],
-                ],
+            $didDoc['service'][] = [
+                'id' => '#bsky_fg_'.Str::snake($feed->record_name),
+                'type' => 'BskyFeedGenerator',
+                'serviceEndpoint' => 'https://'.$publisher->feed_gen_hostname,
             ];
         }
 
-        return response()->json($feedsJson);
+        return response()->json($didDoc);
     }
 }
