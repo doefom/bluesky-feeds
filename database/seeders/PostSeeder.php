@@ -74,7 +74,7 @@ class PostSeeder extends Seeder
         // 3D PRINTING POSTS
         // -------------------------------------------------------------------------------------------
 
-        $feed3DPrinting = Feed::query()->where('record_name', '3d-printing')->first();
+        $feed3DPrinting = Feed::query()->where('record_name', '3d_printing')->first();
 
         $posts3DPrinting = [
             ['uri' => 'at://did:plc:wzxsg3lasghtdjnlsa6a45pn/app.bsky.feed.post/3lizdcqrfjc2a', 'cid' => 'bafyreigwmzluyz6unhzrugd2jgvtssfyaswmstqcke3lat4hq7h5lcxbye'],
