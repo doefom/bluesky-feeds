@@ -34,7 +34,7 @@ class BlueskyRepoUnpublish extends Command
         /* @var Publisher $publisher */
         $publisher = $feed->publisher;
 
-        $bluesky = new Bluesky($publisher->base_url);
+        $bluesky = new Bluesky;
         $bluesky->authenticate($publisher);
 
         $repo = $publisher->feed_gen_publisher_did;

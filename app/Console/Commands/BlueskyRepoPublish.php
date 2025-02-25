@@ -34,14 +34,14 @@ class BlueskyRepoPublish extends Command
         $publisher = $feed->publisher;
 
         $feedGenPublisherDid = $publisher->feed_gen_publisher_did;
-        $feedGenHostname = $publisher->feed_gen_hostname;
+        $feedGenHostname = config('bluesky.feed_gen_hostname');
 
         $recordName = $feed->record_name;
         $displayName = $feed->display_name;
         $description = $feed->description;
         $avatarPath = $feed->avatar_path;
 
-        $bluesky = new Bluesky($publisher->base_url);
+        $bluesky = new Bluesky;
         $bluesky->authenticate($publisher);
         $uploadBlobRes = $bluesky->uploadBlob($avatarPath);
         $blob = Arr::get($uploadBlobRes, 'blob');

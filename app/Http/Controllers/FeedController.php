@@ -50,12 +50,10 @@ class FeedController extends Controller
         $feeds = Feed::all();
 
         foreach ($feeds as $feed) {
-            $publisher = $feed->publisher;
-
             $didDoc['service'][] = [
                 'id' => '#bsky_fg_'.$feed->record_name,
                 'type' => 'BskyFeedGenerator',
-                'serviceEndpoint' => 'https://'.$publisher->feed_gen_hostname,
+                'serviceEndpoint' => 'https://' . config('bluesky.feed_gen_hostname'),
             ];
         }
 

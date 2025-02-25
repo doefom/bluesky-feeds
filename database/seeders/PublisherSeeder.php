@@ -17,9 +17,7 @@ class PublisherSeeder extends Seeder
 
         foreach ($publishers as $publisher) {
             Publisher::query()->create([
-                'feed_gen_hostname' => $publisher['feed_gen_hostname'],
                 'feed_gen_publisher_did' => $publisher['feed_gen_publisher_did'],
-                'base_url' => $publisher['base_url'],
                 'handle' => $publisher['handle'],
                 'password' => encrypt($publisher['password']),
             ]);

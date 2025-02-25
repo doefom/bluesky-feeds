@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('publishers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('feed_gen_hostname');
             $table->string('feed_gen_publisher_did');
-            $table->string('base_url');
             $table->string('handle');
             $table->string('password');
         });
