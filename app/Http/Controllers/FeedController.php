@@ -42,7 +42,7 @@ class FeedController extends Controller
     public function getDidDocument()
     {
         $didDoc = [
-            '@context' => 'https://www.w3.org/ns/did/v1',
+            '@context' => ['https://www.w3.org/ns/did/v1'],
             'id' => 'did:web:bluesky-feeds.doefom.de',
             'service' => [],
         ];
@@ -53,7 +53,7 @@ class FeedController extends Controller
             $publisher = $feed->publisher;
 
             $didDoc['service'][] = [
-                'id' => '#bsky_fg_'.Str::snake($feed->record_name),
+                'id' => '#bsky_fg_'.$feed->record_name,
                 'type' => 'BskyFeedGenerator',
                 'serviceEndpoint' => 'https://'.$publisher->feed_gen_hostname,
             ];
