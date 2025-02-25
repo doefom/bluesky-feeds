@@ -6,7 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publisher extends Model
 {
-
     protected $fillable = ['did', 'name'];
-
 }
