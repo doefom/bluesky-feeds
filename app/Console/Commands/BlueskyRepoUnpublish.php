@@ -28,9 +28,9 @@ class BlueskyRepoUnpublish extends Command
      */
     public function handle()
     {
-        $feedSlug = $this->ask('Which feed do you want to unpublish? (slug)');
+        $feedRecordName = $this->ask('Which feed do you want to unpublish? (slug)');
 
-        $feed = Feed::query()->where('record_name', $feedSlug)->firstOrFail();
+        $feed = Feed::query()->where('record_name', $feedRecordName)->firstOrFail();
         /* @var Publisher $publisher */
         $publisher = $feed->publisher;
 
