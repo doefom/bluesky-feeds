@@ -83,14 +83,14 @@ class SubscribeToFirehose extends Command
         // Check SUP hashtags
         $hasSupHashtag = ! empty(array_intersect($words, Sup::STRONG_HASHTAGS));
         if ($hasSupHashtag) {
-            $feed = Feed::query()->where('title', 'SUP')->first();
+            $feed = Feed::query()->where('record_name', 'sup')->first();
             $this->indexPost($payload, $feed);
         }
 
         // Check 3D Printing hashtags
         $has3DPrintingHashtag = ! empty(array_intersect($words, Printing3D::STRONG_HASHTAGS));
         if ($has3DPrintingHashtag) {
-            $feed = Feed::query()->where('title', '3D Printing')->first();
+            $feed = Feed::query()->where('record_name', '3d_printing')->first();
             $this->indexPost($payload, $feed);
         }
     }
