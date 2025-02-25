@@ -8,7 +8,9 @@
             "id": "#bsky_fg",
             "type": "BskyFeedGenerator",
             "serviceEndpoint": {
-                "origins": [ "https://bluesky-feeds.doefom.de" ]
+                "origins": [
+                    "https://bluesky-feeds.doefom.de"
+                ]
             }
         }
     ]
