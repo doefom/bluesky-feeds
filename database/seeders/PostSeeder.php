@@ -56,6 +56,14 @@ class PostSeeder extends Seeder
             ['uri' => 'at://did:plc:surxzhejohzswnhaz4apnent/app.bsky.feed.post/3lej7qqxg522h', 'cid' => 'bafyreiav23cfamrxrvjbrf2paueo5x3qwcfkiuzl67ptjhharsxkdsigsq'],
             ['uri' => 'at://did:plc:huo5yychqhf6ifzoxek7bs4y/app.bsky.feed.post/3lekg6fyp4s2s', 'cid' => 'bafyreiheko67hgzd2i7hmtvq2dlexco2n4q2y7dsczkaa6ylklfbpqsgrm'],
             ['uri' => 'at://did:plc:huo5yychqhf6ifzoxek7bs4y/app.bsky.feed.post/3lekgcvqbnk2s', 'cid' => 'bafyreihhtifejg6kyf4i3wowu3vhmpr47h7fgwet5sscnen6w2xx7fcule'],
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdllacqm27', 'cid' => 'bafyreifw6svum6wrf3txcgqjykblf7pbzsmhwh5ntwwucrdrafy3ecjjle'],
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdnni6452n', 'cid' => 'bafyreicvzh3hzmexpdmhrxhk3pvz2ngpuujhcmzotzbr7rqosp3xofexby'],
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdnvk3rm23', 'cid' => 'bafyreicvzviwsqjazk47folepvghclscvx6dlt6g4jlrml3xjcvlfcbnyq'],
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdod2c7z25', 'cid' => 'bafyreihidomjblxrc6tyqqg3nqqlepuwgbqcmsg3nk4gfbctw4wzcbzpqq'],
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdp6ygff2n', 'cid' => 'bafyreignopgxktzrfkcbozyxr4jvnncmdmaazx7fvuri5e7clom6dr6poa'],
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdpud6x222', 'cid' => 'bafyreidffyvopvhrq27ttsba5lkklc7mdhspp6fpyd2jmnozdib23ug5ti'],
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdrozter25', 'cid' => 'bafyreiafiriw6bpzuw5fin52k4axca4qnbcgrr5ciddfo5yfcitka3dzw4'],
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizds35llb25', 'cid' => 'bafyreihkenb456fia5mkssar62mpeucx2pv5fus3avirehb2r4tqhvl5my']
         ];
 
         foreach ($postsSup as $post) {
