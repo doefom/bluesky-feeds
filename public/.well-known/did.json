@@ -5,12 +5,7 @@
     "id": "did:web:bluesky-feeds.doefom.de",
     "service": [
         {
-            "id": "#bsky_fg_sup",
-            "type": "BskyFeedGenerator",
-            "serviceEndpoint": "https://bluesky-feeds.doefom.de"
-        },
-        {
-            "id": "#bsky_fg_3d_printing",
+            "id": "#bsky_fg",
             "type": "BskyFeedGenerator",
             "serviceEndpoint": "https://bluesky-feeds.doefom.de"
         }
