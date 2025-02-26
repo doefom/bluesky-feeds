@@ -1,6 +1,14 @@
-# SUP Feed Generator
+# Bluesky Feed Generator
 
-A custom feed generator for posts about Stand Up Paddleboarding (SUP) on [Bluesky](https://bsky.app/) from people all
-around the world.
+A Laravel project for generating Bluesky feeds you can start out with.
 
-Available here: https://bsky.app/profile/durchpaddeln.de/feed/sup
+## Features
+- Generate one or more Bluesky feeds
+- Each feed can have a different publisher
+
+## Limitations
+The application only supports one service endpoint (e.g. `https://my-bluesky-feeds.example.com`). You can still run
+multiple different feeds from different publishers, but they will all be served from the same endpoint.
+
+## How to use
+Coming soon...
