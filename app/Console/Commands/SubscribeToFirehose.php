@@ -79,16 +79,17 @@ class SubscribeToFirehose extends Command
         $text = Arr::get($payload, 'commit.record.text');
 
         $words = preg_split('/\s+/', $text, -1, PREG_SPLIT_NO_EMPTY);
+        $wordsLower = array_map('strtolower', $words);
 
         // Check SUP hashtags
-        $hasSupHashtag = ! empty(array_intersect($words, Sup::STRONG_HASHTAGS));
+        $hasSupHashtag = ! empty(array_intersect($wordsLower, Sup::STRONG_HASHTAGS));
         if ($hasSupHashtag) {
             $feed = Feed::query()->where('record_name', 'sup')->first();
             $this->indexPost($payload, $feed);
         }
 
         // Check 3D Printing hashtags
-        $has3DPrintingHashtag = ! empty(array_intersect($words, Printing3D::STRONG_HASHTAGS));
+        $has3DPrintingHashtag = ! empty(array_intersect($wordsLower, Printing3D::STRONG_HASHTAGS));
         if ($has3DPrintingHashtag) {
             $feed = Feed::query()->where('record_name', '3d_printing')->first();
             $this->indexPost($payload, $feed);
