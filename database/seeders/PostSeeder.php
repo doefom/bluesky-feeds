@@ -63,7 +63,7 @@ class PostSeeder extends Seeder
             ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdp6ygff2n', 'cid' => 'bafyreignopgxktzrfkcbozyxr4jvnncmdmaazx7fvuri5e7clom6dr6poa'],
             ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdpud6x222', 'cid' => 'bafyreidffyvopvhrq27ttsba5lkklc7mdhspp6fpyd2jmnozdib23ug5ti'],
             ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizdrozter25', 'cid' => 'bafyreiafiriw6bpzuw5fin52k4axca4qnbcgrr5ciddfo5yfcitka3dzw4'],
-            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizds35llb25', 'cid' => 'bafyreihkenb456fia5mkssar62mpeucx2pv5fus3avirehb2r4tqhvl5my']
+            ['uri' => 'at://did:plc:zeqmv3ff6h4tcrncp6jj2zbi/app.bsky.feed.post/3lizds35llb25', 'cid' => 'bafyreihkenb456fia5mkssar62mpeucx2pv5fus3avirehb2r4tqhvl5my'],
         ];
 
         foreach ($postsSup as $post) {

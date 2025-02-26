@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Feed;
 use App\Models\Post;
-use App\Models\Publisher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class FeedController extends Controller
 {
@@ -53,7 +51,7 @@ class FeedController extends Controller
             $didDoc['service'][] = [
                 'id' => '#bsky_fg_'.$feed->record_name,
                 'type' => 'BskyFeedGenerator',
-                'serviceEndpoint' => 'https://' . config('bluesky.feed_gen_hostname'),
+                'serviceEndpoint' => 'https://'.config('bluesky.feed_gen_hostname'),
             ];
         }
 
